@@ -1,1 +1,0 @@
-int SelectionSort (int *, int);

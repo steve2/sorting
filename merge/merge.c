@@ -1,5 +1,7 @@
-static void merge (int*, int, int, int*);
-static void recursive (int*, int, int, int*);
+typedef long long LONG64;
+
+static void merge (LONG64*, LONG64, LONG64, LONG64*);
+static void recursive (LONG64*, LONG64, LONG64, LONG64*);
 
 /**
  * MergeSort
@@ -12,8 +14,8 @@ static void recursive (int*, int, int, int*);
  * recursive operation by allocating temporary stack memory and initiating
  * the recursive process.
  */
-void MergeSort (int* data, int length) {
-	int temp [length];
+void MergeSort (LONG64* data, LONG64 length) {
+	LONG64 temp [length];
 	recursive(data, 0, length, temp);
 	merge(data, 0, length, temp);
 }
@@ -34,9 +36,9 @@ void MergeSort (int* data, int length) {
  *
  * This saves a substantial amount of unnecessary merge operations.
  */
-static void recursive (int* data, int start, int end, int* temp) {	
-	int m = start + (end - start) / 2;
-	int i;
+static void recursive (LONG64* data, LONG64 start, LONG64 end, LONG64* temp) {	
+	LONG64 m = start + (end - start) / 2;
+	LONG64 i;
 	if ((end - start) > 1) {
 		recursive(data, start, m, temp);
 		merge(data, start, m, temp);
@@ -45,9 +47,9 @@ static void recursive (int* data, int start, int end, int* temp) {
 	}
 }
 
-static void merge (int* data, int start, int end, int* temp) {
-	int m = start + (end - start) / 2;
-	int tid = start, i = start, j = m;
+static void merge (LONG64* data, LONG64 start, LONG64 end, LONG64* temp) {
+	LONG64 m = start + (end - start) / 2;
+	LONG64 tid = start, i = start, j = m;
 	while (i < m && j < end) {
 		temp[tid++] = (data[i] < data[j]) ? data[i++] : data[j++];
 	}
